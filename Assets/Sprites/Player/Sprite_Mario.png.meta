@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MarioWalk_1
+      name: MarioIdle
       rect:
         serializedVersion: 2
         x: 3
@@ -131,7 +131,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MarioWalk_2
+      name: MarioWalk_1
       rect:
         serializedVersion: 2
         x: 20
@@ -152,7 +152,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MarioWalk_3
+      name: MarioWalk_2
       rect:
         serializedVersion: 2
         x: 37
@@ -173,7 +173,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MarioWalk_4
+      name: MarioWalk_3
       rect:
         serializedVersion: 2
         x: 54
@@ -194,7 +194,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MarioWalk_5
+      name: MarioWalk_4
       rect:
         serializedVersion: 2
         x: 71
@@ -215,7 +215,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MarioWalk_6
+      name: MarioWalk_5
       rect:
         serializedVersion: 2
         x: 88
@@ -236,7 +236,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MarioWalk_7
+      name: MarioWalk_6
       rect:
         serializedVersion: 2
         x: 107
@@ -1403,6 +1403,7 @@ TextureImporter:
     nameFileIdTable:
       MarioAttack_1: 284975248
       MarioAttack_2: -829795931
+      MarioIdle: 961295348
       MarioJumpAttack_1: -425917409
       MarioJumpAttack_2: 1806743833
       MarioJumpAttack_3: 181884343
@@ -1411,13 +1412,12 @@ TextureImporter:
       MarioJumpAttack_6: 151781332
       MarioJump_1: -936589462
       MarioJump_2: 1902611167
-      MarioWalk_1: 961295348
-      MarioWalk_2: 1720952490
-      MarioWalk_3: -1922424555
-      MarioWalk_4: -1907399098
-      MarioWalk_5: 2033529512
-      MarioWalk_6: 103044999
-      MarioWalk_7: 280713921
+      MarioWalk_1: 1720952490
+      MarioWalk_2: -1922424555
+      MarioWalk_3: -1907399098
+      MarioWalk_4: 2033529512
+      MarioWalk_5: 103044999
+      MarioWalk_6: 280713921
       Sprite_Mario_10: 1019817711
       Sprite_Mario_11: 1534519885
       Sprite_Mario_12: -627209232
