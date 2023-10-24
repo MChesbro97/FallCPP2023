@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 49915012}
   - component: {fileID: 49915013}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FloatingPlatform_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,7 +210,7 @@ GameObject:
   m_Component:
   - component: {fileID: 87604994}
   - component: {fileID: 87604995}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SilverPipe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -287,7 +287,7 @@ GameObject:
   m_Component:
   - component: {fileID: 91015378}
   - component: {fileID: 91015379}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor_1.1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -364,7 +364,7 @@ GameObject:
   m_Component:
   - component: {fileID: 167703647}
   - component: {fileID: 167703648}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Edge_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -437,7 +437,7 @@ GameObject:
   m_Component:
   - component: {fileID: 219126763}
   - component: {fileID: 219126764}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FloatingPlatform_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -514,7 +514,7 @@ GameObject:
   m_Component:
   - component: {fileID: 278765658}
   - component: {fileID: 278765659}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FloatingPlatform_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -594,8 +594,9 @@ GameObject:
   - component: {fileID: 404339603}
   - component: {fileID: 404339604}
   - component: {fileID: 404339605}
+  - component: {fileID: 404339606}
   m_Layer: 0
-  m_Name: MarioWalk_1
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -662,8 +663,8 @@ Transform:
   m_GameObject: {fileID: 404339600}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.9, y: -0.47, z: 0}
-  m_LocalScale: {x: 0.8219377, y: 0.8219377, z: 0.8219377}
+  m_LocalPosition: {x: -10.64, y: -4.38, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -694,7 +695,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &404339604
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -752,6 +753,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10832094c866b7941a5cacf2cf6494c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 5
+  jumpForce: 300
+  isGrounded: 0
+  groundCheck: {fileID: 0}
+  isGroundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  groundCheckRadius: 0.02
+--- !u!95 &404339606
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404339600}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4d3b85800fff2594087a23408a94fa4c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -837,7 +867,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -854,7 +884,7 @@ GameObject:
   m_Component:
   - component: {fileID: 522359244}
   - component: {fileID: 522359245}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -931,7 +961,7 @@ GameObject:
   m_Component:
   - component: {fileID: 661457397}
   - component: {fileID: 661457398}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Edge_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1004,7 +1034,7 @@ GameObject:
   m_Component:
   - component: {fileID: 770244337}
   - component: {fileID: 770244338}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Edge_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1077,7 +1107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 774449822}
   - component: {fileID: 774449823}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Edge_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1150,7 +1180,7 @@ GameObject:
   m_Component:
   - component: {fileID: 781914148}
   - component: {fileID: 781914149}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Edge_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1223,7 +1253,7 @@ GameObject:
   m_Component:
   - component: {fileID: 827681197}
   - component: {fileID: 827681198}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1377,7 +1407,7 @@ GameObject:
   m_Component:
   - component: {fileID: 986461732}
   - component: {fileID: 986461733}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor_5.2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1513,7 +1543,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1141166371}
   - component: {fileID: 1141166372}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1590,7 +1620,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1244319386}
   - component: {fileID: 1244319387}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FloatingUpsidedownPipe_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1667,7 +1697,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1254266232}
   - component: {fileID: 1254266233}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1744,7 +1774,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1285060790}
   - component: {fileID: 1285060791}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GreenPipe_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1821,7 +1851,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1345932715}
   - component: {fileID: 1345932716}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor_5.3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1898,7 +1928,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1385960728}
   - component: {fileID: 1385960729}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1975,7 +2005,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1611859435}
   - component: {fileID: 1611859436}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BluePipe_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2052,7 +2082,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1644519441}
   - component: {fileID: 1644519442}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Edge_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2125,7 +2155,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1860454110}
   - component: {fileID: 1860454111}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Edge_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2198,7 +2228,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1880555145}
   - component: {fileID: 1880555146}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BluePipe_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2275,7 +2305,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1914491442}
   - component: {fileID: 1914491443}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GreenPipeFloating_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2352,7 +2382,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1937822859}
   - component: {fileID: 1937822860}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor_5.1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2590,7 +2620,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2071722281}
   - component: {fileID: 2071722282}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Edge_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
