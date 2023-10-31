@@ -2399,7 +2399,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemies_109
+      name: Fireball
       rect:
         serializedVersion: 2
         x: 383
@@ -14536,6 +14536,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Sprite_Enemies_109
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 292
+        width: 22
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebe537a59123f7d4998061659cccc1e7
+      internalID: 999356779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -14547,6 +14568,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Fireball: 1966691014
       KoopaDeath_1: -1271410689
       KoopaDeath_2: 187530556
       KoopaDeath_3: -1356584369
@@ -14565,7 +14587,7 @@ TextureImporter:
       Sprite_Enemies_106: 1853493601
       Sprite_Enemies_107: 1150654214
       Sprite_Enemies_108: -1322391576
-      Sprite_Enemies_109: 1966691014
+      Sprite_Enemies_109: 999356779
       Sprite_Enemies_11: 1080818844
       Sprite_Enemies_110: 171943500
       Sprite_Enemies_111: 1725228447

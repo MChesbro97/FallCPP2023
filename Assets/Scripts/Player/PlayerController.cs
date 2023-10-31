@@ -65,34 +65,82 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        AnimatorClipInfo[] curPlayingClips = anim.GetCurrentAnimatorClipInfo(0);
         float hInput = Input.GetAxisRaw("Horizontal");
         float vInput = Input.GetAxisRaw("Vertical");
         float attack = Input.GetAxisRaw("Fire1");
 
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, isGroundLayer);
+        if (isGrounded) rb.gravityScale = 1;
+        
+        if (curPlayingClips.Length > 0) 
+        {
+            if (curPlayingClips[0].clip.name == "Attack")
+                rb.velocity = Vector2.zero;
+            else
+            {
+                Vector2 moveDirection = new Vector2(hInput * speed, rb.velocity.y);
+                rb.velocity = moveDirection;
+            }
+        {
+
+        
+        }
+        }
 
         if (isGrounded && Input.GetButtonDown("Jump"))
         {
             rb.AddForce(Vector2.up * jumpForce);
         }
-
-        if(hInput > 0) 
+        
+        if(Input.GetButtonDown("Fire1"))
         {
-            gameObject.transform.localScale = new Vector3(1, 1, 1);
+            anim.SetTrigger("attack");
         }
 
-        if(hInput < 0)
-        {
-            gameObject.transform.localScale = new Vector3(-1,1,1);
-        }
+        if (hInput != 0) sr.flipX = (hInput < 0);
 
-        Vector2 moveDirection = new Vector2(hInput * speed, rb.velocity.y);
-        rb.velocity = moveDirection;
+        /*Vector2 moveDirection = new Vector2(hInput * speed, rb.velocity.y);
+        rb.velocity = moveDirection;*/
 
         anim.SetBool("isGrounded", isGrounded);
         anim.SetFloat("hInput", Mathf.Abs(hInput));
         anim.SetFloat("vInput", Mathf.Abs(vInput));
-        anim.SetFloat("attack", attack);
+        
     }
+
+    public void IncreaseGravity()
+    {
+        rb.gravityScale = 10;
+    }
+    //called the frame that the collision happened
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log(collision.gameObject.name);
+    }
+
+    //called the frame that the collision exits
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        
+    }
+
+    //called on the second frame while in the collision, and continuously called while you remain in the collider
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        
+    }
+
+
 }
     
