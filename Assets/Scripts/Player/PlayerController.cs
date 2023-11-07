@@ -10,6 +10,44 @@ public class PlayerController : MonoBehaviour
     SpriteRenderer sr;
     Animator anim;
 
+    Coroutine jumpForceChange;
+    Coroutine speedChange;
+
+
+    private int _score = 0;
+    public int score
+    {
+        get => _score;
+        set
+        {
+            _score = value;
+            Debug.Log("Score has ben set to: " + _score.ToString());
+        }
+    }
+
+    private int _lives = 3;
+
+    public int lives
+    {
+        get => _lives;
+        set
+        {
+            //if (_lives > value)
+            //Respawn = lost a life
+
+            _lives = value;
+
+            if (_lives > maxLives)
+                _lives = maxLives;
+
+            //if (_lives < 0)
+            //gameover
+
+            Debug.Log("Lives has ben set to: " + _lives.ToString());
+        }
+    }
+    public int maxLives = 5;
+
     //Movement Variables
     public float speed = 5.0f;
     public float jumpForce = 300.0f;
@@ -112,6 +150,48 @@ public class PlayerController : MonoBehaviour
     {
         rb.gravityScale = 10;
     }
+
+    public void StartJumpForceChange()
+    {
+        if (jumpForceChange == null) jumpForceChange = StartCoroutine(JumpForceChange());
+        else
+        {
+            StopCoroutine(jumpForceChange);
+            jumpForceChange = null;
+            jumpForce /= 2;
+            jumpForceChange = StartCoroutine(JumpForceChange());
+        }
+
+    }
+
+    public void StartSpeedChange()
+    {
+        if (speedChange == null) speedChange = StartCoroutine(SpeedChange());
+        else
+        {
+            StopCoroutine(speedChange);
+            speedChange = null;
+            speed /= 2;
+            speedChange = StartCoroutine(SpeedChange());
+        }
+
+    }
+
+    IEnumerator JumpForceChange()
+    {
+        jumpForce *= 2;
+        yield return new WaitForSeconds(5.0f);
+        jumpForce /= 2;
+        jumpForceChange = null;
+    }
+
+    IEnumerator SpeedChange()
+    {
+        speed *= 2;
+        yield return new WaitForSeconds(5.0f);
+        speed /= 2;
+        speedChange = null;
+    }
     //called the frame that the collision happened
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -127,7 +207,7 @@ public class PlayerController : MonoBehaviour
     //called on the second frame while in the collision, and continuously called while you remain in the collider
     private void OnCollisionStay2D(Collision2D collision)
     {
-        
+        Debug.Log(collision.gameObject.name); 
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
