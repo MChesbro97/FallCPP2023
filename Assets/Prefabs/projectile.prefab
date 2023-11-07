@@ -123,7 +123,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 5038881059464389850}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: a5448ceb9dd52d14f84e9dc3aaf4d8b5, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -163,3 +163,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifetime: 0
   speed: 0
+  moveDirection: {x: 1, y: 0}

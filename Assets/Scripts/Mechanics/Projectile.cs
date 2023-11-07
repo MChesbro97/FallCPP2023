@@ -15,19 +15,23 @@ public class Projectile : MonoBehaviour
     [HideInInspector]
     public float speed;
     [HideInInspector]
-    public Vector2 moveDirection = Vector2.right;
+    public Vector2 initVel;
     // Start is called before the first frame update
     void Start()
     {
        
         if (lifetime <= 0) lifetime = 2.0f;
+        GetComponent<Rigidbody2D>().velocity = new Vector2(speed, 0);
+        GetComponent<Rigidbody2D>() .velocity = initVel;
         Destroy(gameObject, lifetime);
          
     }
-    private void FixedUpdate()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        Rigidbody2D rb = GetComponent < Rigidbody2D>();
-        rb.velocity = moveDirection.normalized * speed;
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            Destroy(gameObject);
+        }
     }
 
 }

@@ -674,7 +674,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 847298963
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 961295348, guid: 1d946f75e2635014aac5a5a7cc7cc1c2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -829,6 +829,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileSpeed: 7
+  xVelocity: 0
+  yVelocity: 0
   spawnPointRight: {fileID: 67721865}
   spawnPointLeft: {fileID: 694427997}
   projectilePrefab: {fileID: 745077901148945954, guid: 1ec41077c54910347a17feeb55bef1f4, type: 3}
@@ -1496,7 +1498,7 @@ GameObject:
   - component: {fileID: 902531821}
   m_Layer: 0
   m_Name: LevelEdge_beginning
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1525,7 +1527,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 902531819}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: aafe7d08480daf34cb6c10f576fc1af6, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2937,7 +2939,7 @@ PrefabInstance:
       value: MushroomRed
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 5901034433272922323, guid: f1d38d284e38a7c498bbba7208c55ff9, type: 3}
+    - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
