@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Wall
   - Pickup
+  - Barrier
+  - PlayerProjectile
+  - EnemyProjectile
+  - Enemy
+  - Squish
   layers:
   - Default
   - TransparentFX

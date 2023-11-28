@@ -7,7 +7,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public float lifetime;
-    
+    public int damage;
 
 
     //This is meant to be modfied by the object creating the projectile
@@ -21,7 +21,9 @@ public class Projectile : MonoBehaviour
     {
        
         if (lifetime <= 0) lifetime = 2.0f;
-        GetComponent<Rigidbody2D>().velocity = new Vector2(speed, 0);
+        if (damage <= 0) damage = 2;
+        
+        //GetComponent<Rigidbody2D>().velocity = new Vector2(speed, 0);
         GetComponent<Rigidbody2D>() .velocity = initVel;
         Destroy(gameObject, lifetime);
          
@@ -30,6 +32,12 @@ public class Projectile : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Wall"))
         {
+            Destroy(gameObject);
+        }
+
+        if (collision.gameObject.CompareTag("Enemy") && gameObject.CompareTag("PlayerProjectile"))
+        {
+            collision.gameObject.GetComponent<Enemy>().TakeDamage(damage);
             Destroy(gameObject);
         }
     }

@@ -216,6 +216,14 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(collision.gameObject);
         }
+
+        if (collision.CompareTag("Squish"))
+        {
+            collision.transform.parent.gameObject.GetComponent<Enemy>().TakeDamage(9999);
+
+            rb.velocity = Vector2.zero;
+            rb.AddForce(Vector2.up * jumpForce);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
