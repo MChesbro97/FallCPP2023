@@ -6,6 +6,7 @@ using UnityEngine;
 public class EnemyTurret : Enemy
 {
     public float projectileFireRate;
+    //public Transform player;
 
     float timeSinceLastFire = 0;
 
@@ -21,15 +22,46 @@ public class EnemyTurret : Enemy
     // Update is called once per frame
     void Update()
     {
-        AnimatorClipInfo[] curPlayingClips = anim.GetCurrentAnimatorClipInfo(0);
-
-        if (curPlayingClips[0].clip.name != "Fire")
+        if (GameManager.Instance.playerInstance != null)
         {
-            if (Time.time >= timeSinceLastFire + projectileFireRate)
+            // Check the distance between the turret and the player
+            float distanceToPlayer = Vector2.Distance(transform.position, GameManager.Instance.playerInstance.transform.position);
+
+            // Set a threshold distance at which the turret starts shooting
+            float shootingDistance = 7f; // You can adjust this value to your desired distance
+
+            if (distanceToPlayer <= shootingDistance)
             {
-                anim.SetTrigger("Fire");
-                timeSinceLastFire = Time.time;
+                FlipTurret();
+
+                AnimatorClipInfo[] curPlayingClips = anim.GetCurrentAnimatorClipInfo(0);
+
+                if (curPlayingClips[0].clip.name != "Fire")
+                {
+                    if (Time.time >= timeSinceLastFire + projectileFireRate)
+                    {
+                        anim.SetTrigger("Fire");
+                        timeSinceLastFire = Time.time;
+                    }
+                }
             }
         }
     }
+
+
+    void FlipTurret()
+    {
+        // Flip the turret based on the player's position
+        if (GameManager.Instance.playerInstance.transform.position.x > transform.position.x)
+        {
+            // Player is on the right, flip the turret
+            GetComponent<SpriteRenderer>().flipX = false;
+        }
+        else
+        {
+            // Player is on the left, flip the turret
+            GetComponent<SpriteRenderer>().flipX = true;
+        }
+    }
+
 }

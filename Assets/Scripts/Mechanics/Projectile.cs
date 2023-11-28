@@ -40,6 +40,32 @@ public class Projectile : MonoBehaviour
             collision.gameObject.GetComponent<Enemy>().TakeDamage(damage);
             Destroy(gameObject);
         }
+
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        // Check if the trigger is with an object tagged as "Enemy"
+        if (other.CompareTag("Enemy") && gameObject.CompareTag("EnemyProjectile"))
+        {
+            // Do nothing if the colliding object has the same tag as the projectile
+            if (other.CompareTag("Enemy"))
+            {
+                return; // Do nothing and exit the method
+            }
+
+            // Damage the enemy
+            //other.GetComponent<Enemy>().TakeDamage(damage);
+
+            // Destroy the projectile
+            //Destroy(gameObject);
+        }
+        else if(other.CompareTag("Player") && gameObject.CompareTag("EnemyProjectile"))
+        {
+            other.GetComponent<PlayerController>().lives--;
+            Destroy (gameObject);
+        }
+
     }
 
 }
