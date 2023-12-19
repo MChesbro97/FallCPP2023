@@ -13,12 +13,14 @@ public class Pickups : MonoBehaviour
     }
 
     public PickupType currentPickup;
+    public AudioClip pickupSound;
 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
+            collision.GetComponent<PlayerController>().PlayPickupSound(pickupSound);
 
             switch (currentPickup)
             {
@@ -34,9 +36,9 @@ public class Pickups : MonoBehaviour
                     GameManager.Instance.score++;
                     //do score functionality
                     break;
-                /*case PickupType.Speedboost:
-                    GameManager.Instance.StartSpeedChange();
-                    break;*/
+                //case PickupType.Speedboost:
+                //    GameManager.Instance.StartSpeedChange();
+                //    break;
             }
 
             Destroy(gameObject);

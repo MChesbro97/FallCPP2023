@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4892814616065839428}
   - component: {fileID: 2048157787749398132}
   - component: {fileID: 8319401201935661003}
+  - component: {fileID: 1615455507285347784}
   m_Layer: 0
   m_Name: MushroomRed
   m_TagString: Pickup
@@ -120,3 +121,17 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.08
+--- !u!114 &1615455507285347784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5625164069587396422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de568e5aed8a16148abfde6d48d41434, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentPickup: 0
+  pickupSound: {fileID: 8300000, guid: 891b1473c042e574895e6d70c5a59ea6, type: 3}

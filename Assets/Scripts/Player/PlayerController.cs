@@ -9,44 +9,12 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     SpriteRenderer sr;
     Animator anim;
+    AudioSourceManager asm;
+    Shoot shootScript;
 
     Coroutine jumpForceChange;
     Coroutine speedChange;
 
-
-    private int _score = 0;
-    public int score
-    {
-        get => _score;
-        set
-        {
-            _score = value;
-            Debug.Log("Score has ben set to: " + _score.ToString());
-        }
-    }
-
-    private int _lives = 3;
-
-    public int lives
-    {
-        get => _lives;
-        set
-        {
-            //if (_lives > value)
-            //Respawn = lost a life
-
-            _lives = value;
-
-            if (_lives > maxLives)
-                _lives = maxLives;
-
-            //if (_lives < 0)
-            //gameover
-
-            Debug.Log("Lives has ben set to: " + _lives.ToString());
-        }
-    }
-    public int maxLives = 5;
 
     //Movement Variables
     public float speed = 5.0f;
@@ -57,6 +25,12 @@ public class PlayerController : MonoBehaviour
     public Transform groundCheck;
     public LayerMask isGroundLayer;
     public float groundCheckRadius = 0.02f;
+
+    public AudioClip jumpSound;
+    public AudioClip fireSound;
+    public AudioClip stompSound;
+
+    //public CanvasManager pauseMenu;
     // Start is called before the first frame update
     void Start()
     {
@@ -64,6 +38,8 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        asm = GetComponent<AudioSourceManager>();
+        shootScript = GetComponent<Shoot>();
 
         //checking variables for dirty data
         if(rb == null)
@@ -72,8 +48,13 @@ public class PlayerController : MonoBehaviour
             Debug.Log("No SpriteRenderer Reference");
         if (anim == null)
             Debug.Log("No Animator Reference");
+        if (asm == null)
+            Debug.Log("No audio source manager");
+        if (shootScript == null)
+            Debug.Log("No shoot script added");
 
-        if(groundCheckRadius <= 0)
+
+        if (groundCheckRadius <= 0)
         {
             groundCheckRadius = 0.02f;
             Debug.Log("Groundcheck set to default value");
@@ -98,53 +79,71 @@ public class PlayerController : MonoBehaviour
             obj.name = "GroundCheck";
             groundCheck = obj.transform;
         }
+
+        shootScript.OnProjectileSpawned += OnProjectileSpawned;
+    }
+
+    public void PlayPickupSound(AudioClip clip)
+    {
+        asm.PlayOneShot(clip, false);
+    }
+
+    void OnProjectileSpawned()
+    {
+        asm.PlayOneShot(fireSound, false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        AnimatorClipInfo[] curPlayingClips = anim.GetCurrentAnimatorClipInfo(0);
-        float hInput = Input.GetAxisRaw("Horizontal");
-        float vInput = Input.GetAxisRaw("Vertical");
-        float attack = Input.GetAxisRaw("Fire1");
-
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, isGroundLayer);
-        if (isGrounded) rb.gravityScale = 1;
+        if (Time.timeScale == 0) return; 
         
-        if (curPlayingClips.Length > 0) 
-        {
-            if (curPlayingClips[0].clip.name == "Attack")
-                rb.velocity = Vector2.zero;
-            else
+            AnimatorClipInfo[] curPlayingClips = anim.GetCurrentAnimatorClipInfo(0);
+            float hInput = Input.GetAxisRaw("Horizontal");
+            float vInput = Input.GetAxisRaw("Vertical");
+            float attack = Input.GetAxisRaw("Fire1");
+
+            isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, isGroundLayer);
+            if (isGrounded) rb.gravityScale = 1;
+
+            if (curPlayingClips.Length > 0)
             {
-                Vector2 moveDirection = new Vector2(hInput * speed, rb.velocity.y);
-                rb.velocity = moveDirection;
+                if (curPlayingClips[0].clip.name == "Attack")
+                    rb.velocity = Vector2.zero;
+                else
+                {
+                    Vector2 moveDirection = new Vector2(hInput * speed, rb.velocity.y);
+                    rb.velocity = moveDirection;
+                }
+
             }
-        {
+
+            if (isGrounded && Input.GetButtonDown("Jump"))
+            {
+                rb.AddForce(Vector2.up * jumpForce);
+                asm.PlayOneShot(jumpSound, false);
+            }
+
+            if (Input.GetButtonDown("Fire1"))
+            {
+                anim.SetTrigger("attack");
+            }
+
+            if (hInput != 0) sr.flipX = (hInput < 0);
+
+
+
+            anim.SetBool("isGrounded", isGrounded);
+            anim.SetFloat("hInput", Mathf.Abs(hInput));
+            anim.SetFloat("vInput", Mathf.Abs(vInput));
+
 
         
-        }
-        }
-
-        if (isGrounded && Input.GetButtonDown("Jump"))
-        {
-            rb.AddForce(Vector2.up * jumpForce);
-        }
-        
-        if(Input.GetButtonDown("Fire1"))
-        {
-            anim.SetTrigger("attack");
-        }
-
-        if (hInput != 0) sr.flipX = (hInput < 0);
-
-  
-
-        anim.SetBool("isGrounded", isGrounded);
-        anim.SetFloat("hInput", Mathf.Abs(hInput));
-        anim.SetFloat("vInput", Mathf.Abs(vInput));
-        
+    
     }
+
+
+    
 
     public void IncreaseGravity()
     {
@@ -223,6 +222,7 @@ public class PlayerController : MonoBehaviour
 
             rb.velocity = Vector2.zero;
             rb.AddForce(Vector2.up * jumpForce);
+            asm.PlayOneShot(stompSound, false);
         }
     }
 

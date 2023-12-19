@@ -5,6 +5,11 @@ using UnityEngine;
 [RequireComponent(typeof(Shoot))]
 public class EnemyTurret : Enemy
 {
+    Shoot shootScript;
+    AudioSourceManager asm;
+
+    public AudioClip shootSound;
+
     public float projectileFireRate;
     //public Transform player;
 
@@ -15,8 +20,23 @@ public class EnemyTurret : Enemy
     {
         base.Start();
 
+        shootScript = GetComponent<Shoot>();
+        asm = GetComponent<AudioSourceManager>();
+
+        if (shootScript == null)
+            Debug.Log("Shoot script not added");
+        if (asm == null)
+            Debug.Log("ASM not added");
+
         if (projectileFireRate <= 0)
             projectileFireRate = 2;
+
+        shootScript.OnProjectileSpawned += PlayShootSound;
+    }
+
+    void PlayShootSound()
+    {
+        asm.PlayOneShot(shootSound, false);
     }
 
     // Update is called once per frame

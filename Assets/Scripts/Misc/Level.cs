@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Level : MonoBehaviour
 {
-    public int startingLives = 2;
+    public int startingLives = 3;
     public Transform spawnPoint;
     // Start is called before the first frame update
     void Start()

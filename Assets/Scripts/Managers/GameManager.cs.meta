@@ -3,7 +3,13 @@ guid: 56ee5c3c964089b4cbf581847744047a
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - lifeSound: {instanceID: 0}
+  - scoreSound: {instanceID: 0}
+  - deathSound: {fileID: 8300000, guid: 6d4c2fc46cc3da54f99ac2827284cfde, type: 3}
+  - playerPrefab: {instanceID: 0}
+  - playerInstance: {instanceID: 0}
+  - spawnPoint: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
